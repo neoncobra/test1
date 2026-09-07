@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Истории успеха - макет</title>
+  <style>
+    :root {
+      --green: #4f7f31;
+      --green-dark: #355c20;
+      --lime: #96c11f;
+      --ink: #263321;
+      --muted: #64705f;
+      --line: #dfe8d9;
+      --surface: #f5f8f2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font: 16px/1.55 Arial, Helvetica, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 40px));
+      min-height: 76px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      color: var(--green-dark);
+    }
+
+    .brand img {
+      width: 150px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .menu {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .header-socials { display: flex; gap: 10px; }
+    .header-socials a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: #3562a9;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .menu a { text-decoration: none; }
+    .menu .active { color: var(--green); }
+
+    .hero {
+      position: relative;
+      background: url("https://kroordirost.ru/wp-content/uploads/2026/04/gzDUAF2ewOgCkC0k39HtiDEvGsMIxhzbC936VqDwQ790aCUljxIrDH8oahZxgD_XEH6398RQBfG-w2a47Dw1g8kp.jpg") center 42% / cover;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,.82); }
+
+    .hero-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+      position: relative;
+      padding: 92px 0 86px;
+    }
+
+    .crumb { margin: 0 0 12px; font-size: 14px; text-transform: uppercase; }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.05;
+      letter-spacing: -.035em;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+      padding: 68px 0 88px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 58px 42px;
+    }
+
+    .story {
+      min-width: 0;
+      text-align: center;
+    }
+
+    .portrait-wrap {
+      width: min(300px, 100%);
+      aspect-ratio: 1;
+      margin: 0 auto 26px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .portrait {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 32%;
+      background: #e9eee5;
+    }
+
+    .story h2 {
+      margin: 0 0 10px;
+      font-size: 25px;
+      line-height: 1.2;
+    }
+
+    .story p {
+      min-height: 74px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .button {
+      min-height: 46px;
+      padding: 12px 19px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--green);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      line-height: 1;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+    .button:focus-visible { outline: 3px solid #d7e8a2; outline-offset: 3px; }
+    .button.secondary { color: var(--green-dark); background: #fff; }
+    .button.primary { color: #fff; background: var(--green); }
+    .button.primary:hover { background: var(--green-dark); }
+
+    .note {
+      margin: 60px 0 0;
+      padding: 18px 20px;
+      border-left: 4px solid var(--lime);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .support-footer {
+      padding: 58px 20px;
+      color: #fff;
+      background: var(--green-dark);
+      text-align: center;
+    }
+
+    .support-footer h2 {
+      margin: 0 0 24px;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.15;
+    }
+
+    .support-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .support-item { width: 190px; }
+    .support-item img {
+      width: 150px;
+      height: 150px;
+      display: block;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .support-links a {
+      min-height: 46px;
+      padding: 12px 20px;
+      border: 2px solid rgba(255,255,255,.75);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .support-links a:first-child {
+      color: var(--green-dark);
+      background: #fff;
+    }
+
+    .site-footer {
+      padding: 42px 20px;
+      color: #e9f1e5;
+      background: #253d1a;
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .footer-logo {
+      width: 150px;
+      max-height: 84px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: .92;
+    }
+
+    .site-footer p { margin: 12px 0 0; }
+    .site-footer a { color: #fff; }
+
+    .footer-contacts {
+      display: grid;
+      gap: 8px;
+      justify-items: end;
+      text-align: right;
+    }
+
+    .footer-map { width: 100%; height: 230px; border: 0; border-radius: 12px; }
+
+    @media (max-width: 960px) {
+      .menu { display: none; }
+      .header-socials { margin-left: auto; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .nav, .hero-inner, main { width: min(100% - 28px, 520px); }
+      .hero-inner { padding: 44px 0; }
+      main { padding: 48px 0 64px; }
+      .grid { grid-template-columns: 1fr; gap: 50px; }
+      .story p { min-height: 0; text-align: center; }
+      .portrait-wrap { width: min(280px, 82vw); }
+      .actions { flex-wrap: wrap; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-contacts { justify-items: start; text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .button { transition: none; }
+      .button:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Основная навигация">
+      <a class="brand" href="#">
+        <img src="https://kroordirost.ru/wp-content/uploads/2020/11/логотип-рост.png" alt="КРООРДИ «РОСТ»">
+      </a>
+      <ul class="menu">
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">О нас</a></li>
+        <li><a href="#">Новости</a></li>
+        <li><a class="active" href="#">Истории успеха</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Поддержать</a></li>
+      </ul>
+      <div class="header-socials" aria-label="Социальные сети"><a href="#" aria-label="ВКонтакте">VK</a><a href="#" aria-label="RuTube">▶</a></div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="crumb">Home</p>
+      <h1>Истории успеха</h1>
+    </div>
+  </section>
+
+  <main>
+    <section class="grid" aria-label="Истории детей">
+      <article class="story">
+        <div class="portrait-wrap"><img class="portrait" src="https://kroordirost.ru/wp-content/uploads/2026/08/bogdan-12-01-640x640.jpg" alt="Богдан, 12 лет"></div>
+        <h2>Богдан, 12 лет</h2>
+        <p>Богдан пришёл в центр РОСТа в 7 лет. Здесь он учится общаться, становится увереннее и открывает новые возможности.</p>
+        <div class="actions"><a class="button secondary" href="#">Читать историю</a><a class="button primary" href="#">Поддержать</a></div>
+      </article>
+
+      <article class="story">
+        <div class="portrait-wrap"><img class="portrait" src="https://kroordirost.ru/wp-content/uploads/2026/08/veronika-8-01-640x640.jpg" alt="Вероника, 8 лет"></div>
+        <h2>Вероника, 8 лет</h2>
+        <p>Вероника любит рисовать и всё яркое. Занятия помогают ей лучше понимать речь и дольше удерживать внимание.</p>
+        <div class="actions"><a class="button secondary" href="#">Читать историю</a><a class="button primary" href="#">Поддержать</a></div>
+      </article>
+
+      <article class="story">
+        <div class="portrait-wrap"><img class="portrait" src="https://kroordirost.ru/wp-content/uploads/2026/08/ilyas-7-01-640x640.jpg" alt="Ильяс, 7 лет"></div>
+        <h2>Ильяс, 7 лет</h2>
+        <p>Ильяс активный и любознательный. Он с интересом учится читать, считать и взаимодействовать с окружающими.</p>
+        <div class="actions"><a class="button secondary" href="#">Читать историю</a><a class="button primary" href="#">Поддержать</a></div>
+      </article>
+
+      <article class="story">
+        <div class="portrait-wrap"><img class="portrait" src="https://kroordirost.ru/wp-content/uploads/2026/08/liza-7-01-640x640.jpg" alt="Лиза, 7 лет"></div>
+        <h2>Лиза, 7 лет</h2>
+        <p>Лиза любит танцевать, петь и рисовать. Каждый новый навык помогает ей становиться самостоятельнее.</p>
+        <div class="actions"><a class="button secondary" href="#">Читать историю</a><a class="button primary" href="#">Поддержать</a></div>
+      </article>
+
+      <article class="story">
+        <div class="portrait-wrap"><img class="portrait" src="https://kroordirost.ru/wp-content/uploads/2026/08/ramil-11-01-640x640.jpg" alt="Рамиль, 11 лет"></div>
+        <h2>Рамиль, 11 лет</h2>
+        <p>Регулярные занятия помогают Рамилю развивать общение, самостоятельность и интерес к людям вокруг.</p>
+        <div class="actions"><a class="button secondary" href="#">Читать историю</a><a class="button primary" href="#">Поддержать</a></div>
+      </article>
+
+      <article class="story">
+        <div class="portrait-wrap"><img class="portrait" src="https://kroordirost.ru/wp-content/uploads/2026/08/elza-13-01-640x640.jpg" alt="Эльза, 13 лет"></div>
+        <h2>Эльза, 13 лет</h2>
+        <p>Шаг за шагом Эльза стала увереннее общаться, выполнять задания и проявлять инициативу на занятиях.</p>
+        <div class="actions"><a class="button secondary" href="#">Читать историю</a><a class="button primary" href="#">Поддержать</a></div>
+      </article>
+    </section>
+
+    <p class="note">Макет для согласования. В финальной версии положение каждой фотографии внутри круга можно настроить отдельно, чтобы лицо оставалось по центру и вокруг него было достаточно пространства.</p>
+  </main>
+
+  <section class="support-footer">
+    <h2>Поддержать развитие детей с инвалидностью</h2>
+    <div class="support-links">
+      <div class="support-item"><img src="https://kroordirost.ru/wp-content/uploads/2025/08/help-rost-320x320.webp" alt="Помочь Росту"><a href="#">Помочь Росту</a></div>
+      <div class="support-item"><img src="https://kroordirost.ru/wp-content/uploads/2025/08/put-help-320x320.webp" alt="Получить помощь"><a href="#">Получить помощь</a></div>
+      <div class="support-item"><img src="https://kroordirost.ru/wp-content/uploads/2025/08/stay-volonter-320x320.webp" alt="Стать волонтером"><a href="#">Стать волонтером</a></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <img class="footer-logo" src="https://kroordirost.ru/wp-content/uploads/2020/11/логотип-рост.png" alt="КРООРДИ «РОСТ»">
+        <p>КРООРДИ «РОСТ», © 2015-2026</p>
+        <p>295050, Российская Федерация, Республика Крым,<br>г. Симферополь, пер. Молодых подпольщиков, 7</p>
+      </div>
+      <iframe class="footer-map" title="КРООРДИ РОСТ на карте" src="https://yandex.ru/map-widget/v1/?um=constructor%3A0e34bafeff29fd3e9f82f94edf0c6220da89e836fa3f2930fd519429f6f157d3&amp;source=constructor"></iframe>
+      <div class="footer-contacts">
+        <strong>Светлана:</strong>
+        <a href="tel:+79787182866">+7 (978) 718-28-66</a>
+        <a href="tel:+79786526078">+7 (978) 652-60-78</a>
+        <a href="mailto:info@kroordirost.ru">info@kroordirost.ru</a>
+        <a href="mailto:orgrost@mail.ru">orgrost@mail.ru</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
