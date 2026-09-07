@@ -244,8 +244,9 @@
 
     .site-footer {
       padding: 42px 20px;
-      color: #e9f1e5;
-      background: #253d1a;
+      color: var(--ink);
+      background: #fff;
+      border-top: 1px solid var(--line);
     }
 
     .footer-inner {
@@ -261,12 +262,10 @@
       width: 150px;
       max-height: 84px;
       object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: .92;
     }
 
     .site-footer p { margin: 12px 0 0; }
-    .site-footer a { color: #fff; }
+    .site-footer a { color: var(--green-dark); }
 
     .footer-contacts {
       display: grid;
